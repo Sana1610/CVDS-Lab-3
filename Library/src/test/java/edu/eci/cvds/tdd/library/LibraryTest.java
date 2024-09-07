@@ -1,45 +1,21 @@
 package edu.eci.cvds.tdd.library;
 
-import junit.framework.Test;
-import junit.framework.TestCase;
-import junit.framework.TestSuite;
+import org.junit.*;
+import static org.junit.Assert.*;
 
 import edu.eci.cvds.tdd.library.book.Book;
-import edu.eci.cvds.tdd.library.loan.Loan;
-import edu.eci.cvds.tdd.library.user.User;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-public class LibraryTest extends TestCase
+public class LibraryTest
 {
     private Library library;
     private Book book;
 
-    /**
-     * Create the test case
-     *
-     * @param testName name of the test case
-     */
-    public LibraryTest( String testName )
-    {
-        super( testName );
-    }
-
-    /**
-     * @return the suite of tests being tested
-     */
-    public static Test suite()
-    {
-        return new TestSuite( LibraryTest.class );
-    }
 
     /**
      * creates some testing objects
      * @Before any testing is run
      */
+    @Before
     public void before(){
         library = new Library();
         book = new Book("title", "author", "isbn");
@@ -47,9 +23,10 @@ public class LibraryTest extends TestCase
 
     /**
      * @test
-     * verifies is the book was added correctly into the libray
+     * verifies is the book was added correctly into the library
      */
-    public void testAddBook (Book book){
-        assertTrue(Library.addBook(book));
+    @Test
+        public void TestAddBook(){
+        assertTrue(library.addBook(book));
     }
 }
